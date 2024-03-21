@@ -14,5 +14,16 @@ namespace CurrencyExchangeServiceAPI.Controllers
             _currencyExchangeService = currencyExchangeService;
         }
 
+        [HttpGet("ConvertCurrency")]
+        public IActionResult ConvertCurrency(string source, string target, decimal amount)
+        {
+            var result = _currencyExchangeService.ConvertCurrency(source, target, amount);
+            if (result == "Invalid Currency.")
+            {
+                return BadRequest(new { msg = "Invalid Currency." });
+            }
+            return Ok(new { msg = "success", amount = result });
+        }
+
     }
 }
