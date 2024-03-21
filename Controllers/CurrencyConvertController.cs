@@ -1,19 +1,18 @@
+using CurrencyExchangeServiceAPI.Service;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CurrencyExchangeService.Controllers
+namespace CurrencyExchangeServiceAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class CurrencyConvertController : ControllerBase
     {
-       
-        private readonly ILogger<CurrencyConvertController> _logger;
+        private readonly CurrencyExchangeService _currencyExchangeService;
 
-        public CurrencyConvertController(ILogger<CurrencyConvertController> logger)
+        public CurrencyConvertController(CurrencyExchangeService currencyExchangeService)
         {
-            _logger = logger;
+            _currencyExchangeService = currencyExchangeService;
         }
 
-        
     }
 }
